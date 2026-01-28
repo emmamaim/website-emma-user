@@ -63,7 +63,7 @@ a:hover {
 }
 
 /* hover 放大 */
-#introduction img:hover{
+#introduction img:hover {
   transform: scale(1.12);
 }
 
@@ -167,5 +167,40 @@ a:hover {
 
   #products .carousel img {
     height: 280px;
+  }
+}
+
+
+/* =====================
+    Fancybox5 自訂樣式
+====================== */
+
+/* 1.添加照片邊框 */
+.f-panzoom__content {
+  background-color: #ffffff !important;
+  padding: 12px !important;
+  border-radius: 4px;
+  /* 增加陰影讓圖片像浮在燈箱上方 */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. 針對圖片本身：確保完美貼合邊框 */
+.f-carousel__slide img.f-image {
+  border-radius: 2px;
+  /* 圖片本身的圓角 */
+  vertical-align: middle;
+}
+
+/* 3. 優化：讓燈箱內的標題（data-caption）與邊框保持距離 */
+.f-caption {
+  padding-top: 20px !important;
+  font-weight: 500;
+  color: #eee;
+}
+
+@media (max-width: 768px) {
+  .f-panzoom__content {
+    padding: 6px !important;
+    /* 手機版邊框變細 */
   }
 }
