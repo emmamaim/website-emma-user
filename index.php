@@ -112,7 +112,7 @@ require_once('Connections/conn_db.php');
                 </div>
             </div>
             <!-- 商品列表 -->
-            <div class="row">
+            <div class="row" id="product-list">
                 <div class="col-12">
                     <?php require_once('product_list.php'); ?>
                 </div>

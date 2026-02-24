@@ -26,8 +26,7 @@ $i = 1; ?>
         ?>
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne<?php echo $i; ?>">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne<?php echo $i; ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $i; ?>">
+                <button class="accordion-button <?php echo ($i == $ladder) ? '' : 'collapsed'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<?php echo $i; ?>" aria-expanded="<?php echo ($i == $ladder) ? 'true' : 'false'; ?>" aria-controls="collapseOne<?php echo $i; ?>">
                     <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> fa-lg fa-fw"></i><?php echo $pyclass01_Rows['cname']; ?>
                 </button>
             </h2>
@@ -55,7 +54,7 @@ $i = 1; ?>
                                 <tr>
                                     <td>
                                         <em class="fas <?php echo $pyclass02_Rows['fonticon']; ?>"></em>
-                                        <a href="store.php?classid=<?php echo $pyclass02_Rows['classid']; ?>"><?php echo $pyclass02_Rows['cname']; ?></a>
+                                        <a class="<?php echo (isset($_GET['classid']) && $_GET['classid'] == $pyclass02_Rows['classid'] && (!isset($_GET['level']) || $_GET['level'] != 1)) ? 'active' : ''; ?>" href="store.php?classid=<?php echo $pyclass02_Rows['classid']; ?>"><?php echo $pyclass02_Rows['cname']; ?></a>
                                     </td>
                                 </tr>
                             <?php } ?>

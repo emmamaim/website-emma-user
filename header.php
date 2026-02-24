@@ -9,16 +9,32 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="#">最新消息</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $currentPage == 'news.php' ? 'active' : ''; ?>" 
+                    href="news.php">最新消息</a>
+                </li>
                 <?php multiList01(); ?>
-                <li class="nav-item"><a class="nav-link" href="#">品牌故事</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">門市查詢</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">合作專區</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">客服</a></li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $currentPage == 'brand.php' ? 'active' : ''; ?>" 
+                    href="brand.php">品牌故事</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $currentPage == 'store-location.php' ? 'active' : ''; ?>" 
+                    href="store-location.php">門市查詢</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $currentPage == 'cooperation.php' ? 'active' : ''; ?>" 
+                    href="cooperation.php">合作專區</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $currentPage == 'service.php' ? 'active' : ''; ?>" 
+                    href="service.php">客服</a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">個人專區</a>
+                    <a class="nav-link dropdown-toggle <?php echo $currentPage == 'member.php' ? 'active' : ''; ?>" href="member.php" data-bs-toggle="dropdown">個人專區
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">登入 / 註冊</a></li>
                         <li>
@@ -38,6 +54,7 @@
         </div>
     </div>
 </nav>
+
 <?php
 function multiList01()
 {
@@ -49,21 +66,30 @@ function multiList01()
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">產品</a>
         <ul class="dropdown-menu">
             <?php while ($pyclass01_Rows = $pyclass01->fetch()) { ?>
-                <li class="nav-item dropend">
-                    <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> "></i>
-                        <?php echo $pyclass01_Rows['cname']; ?>
+                <li class="nav-item dropend dropdown">
+                    <!-- 左邊：跳轉 -->
+                    <a class="dropdown-item flex-grow-1"
+                    href="store.php?classid=<?php echo $pyclass01_Rows['classid']; ?>&level=1">
+                    <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> me-2"></i>
+                    <?php echo $pyclass01_Rows['cname']; ?>
                     </a>
+
+                    <!-- 右邊：展開（自訂icon，不用dropdown-toggle就不會出現預設箭頭） -->
+                    <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="展開子分類">
+                    <i class="fas fa-chevron-right"></i>
+                    </button>
                     <?php
-                    $SQLstring = sprintf("SELECT * FROM pyclass WHERE level=2 AND uplink=%d ORDER BY sort", $pyclass01_Rows['classid']);
+                    $SQLstring = sprintf(
+                        "SELECT * FROM pyclass WHERE level=2 AND uplink=%d ORDER BY sort",
+                        $pyclass01_Rows['classid']
+                    );
                     $pyclass02 = $link->query($SQLstring);
-                    // 用來判斷是否有子分類
                     $first = $pyclass02->fetch(PDO::FETCH_ASSOC);
                     ?>
-                    <?php if($first) { ?>
+                    <?php if ($first) { ?>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item">
+                                <a href="store.php?classid=<?php echo $first['classid']; ?>" class="dropdown-item">
                                     <em class="fas <?php echo $first['fonticon']; ?> fa-fw"></em>
                                     <?php echo $first['cname']; ?>
                                 </a>
@@ -72,8 +98,8 @@ function multiList01()
                                 <li>
                                     <a href="store.php?classid=<?php echo $pyclass02_Rows['classid']; ?>" class="dropdown-item">
                                         <em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-fw"></em>
-                                        <?php echo $pyclass02_Rows['cname'] ?>
-                                    </a>~
+                                        <?php echo $pyclass02_Rows['cname']; ?>
+                                    </a>
                                 </li>
                             <?php } ?>
                         </ul>
