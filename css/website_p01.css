@@ -9,7 +9,10 @@ body {
   background-color: #fffdfb;
   color: #5a5a5a;
   line-height: 1.8;
+<<<<<<< HEAD
   padding-top: 60px !important;
+=======
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 a {
@@ -27,7 +30,10 @@ a:hover {
 ===================== */
 .navbar {
   background-color: #ffffff;
+<<<<<<< HEAD
   padding: 0;
+=======
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 .navbar-brand img {
@@ -43,6 +49,7 @@ a:hover {
   color: #e2b6b6;
 }
 
+<<<<<<< HEAD
 .dropdown-item {
   color: #337ab7 !important;
   font-size: 1.2vw;
@@ -144,6 +151,44 @@ a:hover {
     margin-left: -10px;
     margin-right: -10px;
 }
+=======
+/* =====================
+   Introduction
+===================== */
+#introduction {
+  padding: 80px 0 60px;
+}
+
+#introduction .col-md-4 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* 圖片 */
+#introduction img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.6s ease;
+}
+
+/* hover 放大 */
+#introduction img:hover {
+  transform: scale(1.12);
+}
+
+/* 圖片上的文字 */
+#introduction .intro_text {
+  color: #a77f7f;
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* =====================
+   News
+===================== */
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 
 /* =====================
    Products
@@ -180,19 +225,30 @@ a:hover {
    Quick Links
 ===================== */
 #divs {
+<<<<<<< HEAD
   background-color: #fdf7f4;
+=======
+  background-color: #f1ba9e;
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 #divs .col-md-2 {
   background-color: #ffffff;
+<<<<<<< HEAD
   padding: 40px 20px;
+=======
+  padding: 30px 0;
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
   border-radius: 24px;
   font-size: 1.1rem;
   color: #a77f7f;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: all 0.3s ease;
+<<<<<<< HEAD
   margin-right: 10px;
+=======
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 #divs .col-md-2:hover {
@@ -238,6 +294,7 @@ a:hover {
   }
 }
 
+<<<<<<< HEAD
 /* 取消 figure 預設外距，避免看起來不齊 */
 #introduction .intro-media {
   margin: 0;
@@ -274,4 +331,39 @@ a:hover {
   font-weight: 800;
   letter-spacing: .18em;
   text-shadow: 0 10px 22px rgba(0, 0, 0, .35);
+=======
+
+/* =====================
+    Fancybox5 自訂樣式
+====================== */
+
+/* 1.添加照片邊框 */
+.f-panzoom__content {
+  background-color: #ffffff !important;
+  padding: 12px !important;
+  border-radius: 4px;
+  /* 增加陰影讓圖片像浮在燈箱上方 */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. 針對圖片本身：確保完美貼合邊框 */
+.f-carousel__slide img.f-image {
+  border-radius: 2px;
+  /* 圖片本身的圓角 */
+  vertical-align: middle;
+}
+
+/* 3. 優化：讓燈箱內的標題（data-caption）與邊框保持距離 */
+.f-caption {
+  padding-top: 20px !important;
+  font-weight: 500;
+  color: #eee;
+}
+
+@media (max-width: 768px) {
+  .f-panzoom__content {
+    padding: 6px !important;
+    /* 手機版邊框變細 */
+  }
+>>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
