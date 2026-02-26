@@ -133,7 +133,7 @@ require_once('Connections/conn_db.php');
     </section>
 
     <!-- 導入JS文檔 -->
-    <!-- <?php require_once('jsfile.php'); ?> -->
+    <?php require_once('jsfile.php'); ?>
 </body>
 
 </html>
