@@ -9,3 +9,6 @@
 
     <!-- JS文檔 -->
     <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- GO TOP -->
+    <script type="text/javascript" src="js/goTop.js"></script>

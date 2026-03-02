@@ -107,6 +107,11 @@ a:hover {
   color: #a67c52;
 }
 
+/* 購物車圖標 */
+.badge.text-bg-info {
+  font-size: 40%;
+  color: #fff !important;
+}
 /* =====================
    introduction
 ===================== */
@@ -474,6 +479,25 @@ a:hover {
   padding-right: 16px;
 }
 
+/* 產品詳情 */
+.col-md-10 nav {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.card .row.mt-2 .col-md-4 a>img:hover {
+  border: #e600a0 1px solid;
+}
+
+.color_e600a0 {
+  color: #e600a0;
+}
+
+.color-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
 /* =====================
    Links
 ===================== */
@@ -525,6 +549,43 @@ a:hover {
 
 #footer a:hover {
   opacity: 0.7;
+}
+
+/* =====================
+   FancyBox 5
+===================== */
+/* 背景變深 */
+.fancybox__container {
+  --fancybox-bg: rgba(190, 81, 81, 0.85);
+}
+
+/* 圖片邊框效果 */
+.fancybox__content {
+  background: #E8E0D5 !important;
+  /* 香檳/米杏色 */
+  padding: 12px !important;
+  border-radius: 2px;
+  box-shadow: 0 4px 15px rgba(181, 158, 122, 0.2);
+  border: 1px solid #E8E0D5;
+}
+
+/* 圖片 */
+.fancybox__image {
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Caption 容器設定 */
+.fancybox__caption {
+  background: none !important;
+  /* 移除預設黑色漸層 */
+  text-shadow: none !important;
+  /* 移除陰影 */
+  color: #E8E0D5 !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em;
+  padding-top: 20px !important;
 }
 
 /* =====================

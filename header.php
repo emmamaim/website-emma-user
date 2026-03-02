@@ -8,29 +8,34 @@
             data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <?php
+        // 讀取後臺購物車内產品數量
+        $SQLstring = "SELECT * FROM cart WHERE orderid is NULL AND ip='" . $_SERVER['REMOTE_ADDR'] . "'";
+        $cart_rs = $link->query($SQLstring);
+        ?>
 
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $currentPage == 'news.php' ? 'active' : ''; ?>" 
-                    href="news.php">最新消息</a>
+                    <a class="nav-link <?php echo $currentPage == 'news.php' ? 'active' : ''; ?>"
+                        href="news.php">最新消息</a>
                 </li>
                 <?php multiList01(); ?>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $currentPage == 'brand.php' ? 'active' : ''; ?>" 
-                    href="brand.php">品牌故事</a>
+                    <a class="nav-link <?php echo $currentPage == 'brand.php' ? 'active' : ''; ?>"
+                        href="brand.php">品牌故事</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $currentPage == 'store-location.php' ? 'active' : ''; ?>" 
-                    href="store-location.php">門市查詢</a>
+                    <a class="nav-link <?php echo $currentPage == 'store-location.php' ? 'active' : ''; ?>"
+                        href="store-location.php">門市查詢</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $currentPage == 'cooperation.php' ? 'active' : ''; ?>" 
-                    href="cooperation.php">合作專區</a>
+                    <a class="nav-link <?php echo $currentPage == 'cooperation.php' ? 'active' : ''; ?>"
+                        href="cooperation.php">合作專區</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $currentPage == 'service.php' ? 'active' : ''; ?>" 
-                    href="service.php">客服</a>
+                    <a class="nav-link <?php echo $currentPage == 'service.php' ? 'active' : ''; ?>"
+                        href="service.php">客服</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle <?php echo $currentPage == 'member.php' ? 'active' : ''; ?>" href="member.php" data-bs-toggle="dropdown">個人專區
@@ -45,6 +50,14 @@
                         <li><a class="dropdown-item" href="#">管理地址</a></li>
                         <li><a class="dropdown-item" href="#">我的收藏</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        購物車
+                        <span class="badge text-bg-info">
+                            <?php echo ($cart_rs) ? $cart_rs->rowCount() : ''; ?>
+                        </span>
+                    </a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -69,14 +82,14 @@ function multiList01()
                 <li class="nav-item dropend dropdown">
                     <!-- 左邊：跳轉 -->
                     <a class="dropdown-item flex-grow-1"
-                    href="store.php?classid=<?php echo $pyclass01_Rows['classid']; ?>&level=1">
-                    <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> me-2"></i>
-                    <?php echo $pyclass01_Rows['cname']; ?>
+                        href="store.php?classid=<?php echo $pyclass01_Rows['classid']; ?>&level=1">
+                        <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> me-2"></i>
+                        <?php echo $pyclass01_Rows['cname']; ?>
                     </a>
 
                     <!-- 右邊：展開（自訂icon，不用dropdown-toggle就不會出現預設箭頭） -->
                     <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="展開子分類">
-                    <i class="fas fa-chevron-right"></i>
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                     <?php
                     $SQLstring = sprintf(

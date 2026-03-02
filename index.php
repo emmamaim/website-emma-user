@@ -105,13 +105,13 @@ require_once('Connections/conn_db.php');
                     <p class="text-muted">為媽媽與寶寶嚴選</p>
                 </div>
             </div>
-            <!-- 商品輪播 -->
+            <!-- 產品輪播 -->
             <div class="row mb-5">
                 <div class="col-12">
                     <?php require_once('carousel.php'); ?>
                 </div>
             </div>
-            <!-- 商品列表 -->
+            <!-- 產品列表 -->
             <div class="row" id="product-list">
                 <div class="col-12">
                     <?php require_once('product_list.php'); ?>
@@ -134,6 +134,7 @@ require_once('Connections/conn_db.php');
 
     <!-- 導入JS文檔 -->
     <?php require_once('jsfile.php'); ?>
+    <script src="fancybox/fancybox.umd.js"></script>
 </body>
 
 </html>

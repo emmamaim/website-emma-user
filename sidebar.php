@@ -2,7 +2,7 @@
     <?php ?>
     <form action="store.php" name="search" id="search" method="get">
         <div class="input-group">
-            <input type="text" name="search_name" id="search_name" class="form-control" placeholder="Search..." value="<?php echo (isset($_GET['search_name']))?$_GET['search_name']:''; ?>" required>
+            <input type="text" name="search_name" id="search_name" class="form-control" placeholder="Search..." value="<?php echo (isset($_GET['search_name'])) ? $_GET['search_name'] : ''; ?>" required>
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                     <i class="fas fa-search fa-lg"></i>
@@ -21,9 +21,9 @@ $i = 1; ?>
 
 <div class="accordion" id="accordionExample">
     <?php
-    while ($pyclass01_Rows = $pyclass01->fetch()) { 
-        $i=$pyclass01_Rows['classid'];
-        ?>
+    while ($pyclass01_Rows = $pyclass01->fetch()) {
+        $i = $pyclass01_Rows['classid'];
+    ?>
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne<?php echo $i; ?>">
                 <button class="accordion-button <?php echo ($i == $ladder) ? '' : 'collapsed'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<?php echo $i; ?>" aria-expanded="<?php echo ($i == $ladder) ? 'true' : 'false'; ?>" aria-controls="collapseOne<?php echo $i; ?>">
@@ -31,14 +31,20 @@ $i = 1; ?>
                 </button>
             </h2>
             <?php
-            if(isset($_GET['level']) && $_GET['level']==1){
+            if (isset($_GET['p_id'])) {
+                // 使用產品id查詢
+                $SQLstring = sprintf("SELECT uplink FROM pyclass,product WHERE pyclass.classid=product.classid AND p_id=%d", $_GET['p_id']);
+                $classid_rs = $link->query($SQLstring);
+                $data = $classid_rs->fetch();
+                $ladder = $data['uplink'];
+            } elseif (isset($_GET['level']) && $_GET['level'] == 1) {
                 $ladder = $_GET['classid'];
-            }elseif (isset($_GET['classid'])){
+            } elseif (isset($_GET['classid'])) {
                 $SQLstring = "SELECT uplink FROM pyclass WHERE level=2 and classid=" . $_GET['classid'];
                 $classid_rs = $link->query($SQLstring);
                 $data = $classid_rs->fetch();
                 $ladder = $data['uplink'];
-            }else{
+            } else {
                 $ladder = 1;
             }
             // 列出產品類別對映的第二層資料

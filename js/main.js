@@ -1,21 +1,35 @@
-$(document).ready(function() {
-  Fancybox.bind("[data-fancybox]", {
-    Carousel: {
-      infinite: true, // 燈箱內是否循環播放
+function addcart(p_id) {
+  // 將產品p_id加入購物車
+  var qty = $("#qty").val();
+  if (qty <= 0) {
+    alert("產品數量不得為0或為負數，請再修改數量！");
+    return false;
+  }
+  if (qty == undefined) {
+    qty = 1;
+  } else if (qty >= 50) {
+    alert("由於采購限制，產品數量將限制在50以下！");
+    return false;
+  }
+  // 利用jquery $.ajax函數呼叫後臺的addcart.php
+  $.ajax({
+    url: "addcart.php",
+    type: "get",
+    dataType: "json",
+    data: {
+      p_id: p_id,
+      qty: qty,
     },
-    Images: {
-      Panzoom: {
-        maxScale: 2, // 最大放大倍率
-      },
+    success: function (data) {
+      if (data.c == true) {
+        alert(data.m);
+        window.location.reload();
+      } else {
+        alert(data.m);
+      }
     },
-
-    l10n: {
-      CLOSE: "關閉",
-      NEXT: "下一張",
-      PREV: "上一張",
-      MODAL: "按 ESC 鍵可關閉",
-      ERROR: "載入失敗，請稍後再試",
-      IMAGE_NOT_FOUND: "找不到圖片",
-    }
+    error: function (data) {
+      alert("系統目前無法連接到後臺資料庫。");
+    },
   });
-});
+}

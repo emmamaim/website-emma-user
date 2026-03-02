@@ -14,5 +14,8 @@
 <!-- Animate -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<!-- Fancybox5 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+<!-- Goods_content Table -->
+<link rel="stylesheet" href="css/ectable.css">
+
+<!-- FancyBox5 -->
+<link rel="stylesheet" href="fancybox/fancybox.css">
