@@ -37,22 +37,34 @@
                     <a class="nav-link <?php echo $currentPage == 'service.php' ? 'active' : ''; ?>"
                         href="service.php">客服</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?php echo $currentPage == 'member.php' ? 'active' : ''; ?>" href="member.php" data-bs-toggle="dropdown">個人專區
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">登入 / 註冊</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">會員資料</a></li>
-                        <li><a class="dropdown-item" href="#">我的訂單</a></li>
-                        <li><a class="dropdown-item" href="#">管理地址</a></li>
-                        <li><a class="dropdown-item" href="#">我的收藏</a></li>
-                    </ul>
+                <?php
+                if (isset($_SESSION['login'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="btn_confirmLink('是否確定登出？','logout.php')">登出</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">登入</a>
+                    </li>
+                <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.php">註冊</a>
+                </li>
+                <?php if (isset($_SESSION['login'])) { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/<?php echo ($_SESSION['imgname'] != '') ? $_SESSION['imgname'] : 'avatar.svg'; ?>" width="40" height="40" class="rounded-circle">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-dark">
+                            <a class="dropdown-item" href="orderlist.php">我的訂單</a>
+                            <a class="dropdown-item" href="profile.php">編輯資料</a>
+                            <a class="dropdown-item" href="#" onclick="btn_confirmLink('請確定是否要登出', 'logout.php');">登出</a>
+                        </div>
+                    </li>
+                <?php } ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="cart.php">
                         購物車
                         <span class="badge text-bg-info">
                             <?php echo ($cart_rs) ? $cart_rs->rowCount() : ''; ?>

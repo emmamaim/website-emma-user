@@ -112,6 +112,20 @@ a:hover {
   font-size: 40%;
   color: #fff !important;
 }
+
+/* 購物車表格 */
+.table-responsive-md table td {
+  text-align: center;
+}
+
+.table-responsive-md table tfoot td {
+  text-align: center;
+}
+
+.table-responsive-md table tr:hover {
+  background-color: rgba(152, 241, 245, 0.3);
+}
+
 /* =====================
    introduction
 ===================== */
@@ -498,6 +512,7 @@ a:hover {
   background-color: #28a745;
   border-color: #28a745;
 }
+
 /* =====================
    Links
 ===================== */

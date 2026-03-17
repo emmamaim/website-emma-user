@@ -1,11 +1,9 @@
 <?php
 (!isset($_SESSION)) ? session_start() : "";
 ?>
-<!-- 鏈接資料庫 -->
 <?php
 require_once('Connections/conn_db.php');
 ?>
-<!-- 載入共用php函數庫 -->
 <?php require_once("php_lib.php"); ?>
 <!doctype html>
 <html lang="zh-TW">
