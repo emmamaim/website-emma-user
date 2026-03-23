@@ -9,10 +9,6 @@ body {
   background-color: #fffdfb;
   color: #5a5a5a;
   line-height: 1.8;
-<<<<<<< HEAD
-  padding-top: 60px !important;
-=======
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 a {
@@ -30,10 +26,6 @@ a:hover {
 ===================== */
 .navbar {
   background-color: #ffffff;
-<<<<<<< HEAD
-  padding: 0;
-=======
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 .navbar-brand img {
@@ -49,109 +41,6 @@ a:hover {
   color: #e2b6b6;
 }
 
-<<<<<<< HEAD
-.dropdown-item {
-  color: #337ab7 !important;
-  font-size: 1.2vw;
-}
-
-.dropdown .dropdown-item:hover,
-.dropdown .dropdown-item:focus {
-  color: white !important;
-  background-color: #337ab7;
-}
-
-.dropdown:hover>.dropdown-menu,
-.dropend:hover>.dropdown-menu {
-  display: block;
-  margin-top: 0.125em;
-  margin-left: 0.125em;
-  margin-right: 80%;
-}
-
-.dropdown .dropdown-menu {
-  display: none;
-}
-
-@media screen and (min-width:993px) {
-  .dropend:hover>.dropdown-menu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-  }
-}
-
-/* =====================
-   sidebar
-===================== */
-.row .col-md-2 .sidebar,
-.accordion-button {
-  border: 2px solid #dfdfdf;
-  background-color: #f7f7f7;
-}
-
-/* 針對側邊欄所有圖標統一換色 */
-.sidebar .fas, 
-.accordion-header .fas, 
-.accordion-body .fas {
-    color: #ec8d3f; /* 這裡換成你喜歡的顏色，例如粉藍、橘色或明亮的灰色 */
-    margin-right: 8px; /* 順便拉開一點距離，看起來比較不擠 */
-    opacity: 0.8;      /* 稍微透明一點點會顯得更有質感 */
-}
-
-.accordion-button:hover .fas {
-    color: #ffc107; /* 移上去變成金色 */
-}
-
-.sidebar {
-  padding: 5px;
-}
-
-.accordion-button {
-  font-size: 1.5vw;
-}
-
-.accordion-body table td:hover {
-  background-color: antiquewhite;
-}
-
-.accordion-body {
-  padding: 0px;
-}
-
-.table {
-  margin-bottom: 0px;
-}
-
-.table td {
-  border-top: none;
-  border-bottom: 1px solid #dee2e6;
-  padding-left: 2rem;
-  font-size: 0.8vw;
-}
-
-/* =====================
-   breadcrumb
-===================== */
-.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    list-style: none;
-    background-color: #e9ecef;
-    border-radius: 0.25rem;
-}
-
-.breadcrumb a {
-    text-decoration: none;
-}
-
-.col-md-10 nav {
-    margin-left: -10px;
-    margin-right: -10px;
-}
-=======
 /* =====================
    Introduction
 ===================== */
@@ -188,7 +77,6 @@ a:hover {
 /* =====================
    News
 ===================== */
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 
 /* =====================
    Products
@@ -225,30 +113,18 @@ a:hover {
    Quick Links
 ===================== */
 #divs {
-<<<<<<< HEAD
-  background-color: #fdf7f4;
-=======
   background-color: #f1ba9e;
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 #divs .col-md-2 {
   background-color: #ffffff;
-<<<<<<< HEAD
-  padding: 40px 20px;
-=======
   padding: 30px 0;
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
   border-radius: 24px;
   font-size: 1.1rem;
   color: #a77f7f;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: all 0.3s ease;
-<<<<<<< HEAD
-  margin-right: 10px;
-=======
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
 }
 
 #divs .col-md-2:hover {
@@ -294,44 +170,6 @@ a:hover {
   }
 }
 
-<<<<<<< HEAD
-/* 取消 figure 預設外距，避免看起來不齊 */
-#introduction .intro-media {
-  margin: 0;
-  height: 550px;
-  /* 你想要的展示高度 */
-  overflow: hidden;
-  border-radius: 22px;
-  position: relative;
-}
-
-/* 圖片強制填滿同高度（不變形、用裁切） */
-#introduction .intro-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 2s ease;
-}
-
-#introduction .intro-media img:hover {
-  transform: scale(1.5);
-}
-
-#introduction .intro-caption {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-}
-
-#introduction .intro_text {
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: .18em;
-  text-shadow: 0 10px 22px rgba(0, 0, 0, .35);
-=======
 
 /* =====================
     Fancybox5 自訂樣式
@@ -365,5 +203,47 @@ a:hover {
     padding: 6px !important;
     /* 手機版邊框變細 */
   }
->>>>>>> 51c9f3369ff3e97a1a6713a226f2e6326923971e
+}
+
+
+/* 產品詳情 */
+.col-md-10 nav {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.card .row.mt-2 .col-md-4 a>img:hover {
+    border: #e600a0 1px solid;
+}
+
+.color_e600a0 {
+    color: #e600a0;
+}
+
+.color-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* 購物車 */
+.badge.text-bg-info {
+    font-size: 40%;
+    color: #fff !important;
+}
+
+.color_red {
+    color: red;
+}
+
+.table-responsive-md table td {
+    text-align: center;
+}
+
+.table-responsive-md table tfoot td {
+    text-align: center;
+}
+
+.table-responsive-md table tr:hover {
+    background-color: rgba(152, 241, 245, 0.3);
 }

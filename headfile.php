@@ -16,3 +16,5 @@
 
 <!-- Fancybox5 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+
+<link rel="stylesheet" href="website_s01.css"

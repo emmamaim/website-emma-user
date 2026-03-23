@@ -7,16 +7,16 @@ if (isset($_GET['pageNum_rs'])) {
 }
 $starRow_rs = $pageNum_rs * $maxRows_rs;
 
-if (isset($_GET['search_name'])){
+if (isset($_GET['search_name'])) {
     // 使用關鍵字查詢
-    $queryFirst = sprintf("SELECT * FROM product, product_img,pyclass WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id AND product.classid=pyclass.classid AND (product.p_name LIKE '%s' OR product.p_price LIKE '%s') ORDER BY product.p_id DESC", '%'.$_GET['search_name'].'%', '%'.$_GET['search_name'].'%');
-}elseif (isset($_GET['level']) && $_GET['level']==1){
+    $queryFirst = sprintf("SELECT * FROM product, product_img,pyclass WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id AND product.classid=pyclass.classid AND (product.p_name LIKE '%s' OR product.p_price LIKE '%s') ORDER BY product.p_id DESC", '%' . $_GET['search_name'] . '%', '%' . $_GET['search_name'] . '%');
+} elseif (isset($_GET['level']) && $_GET['level'] == 1) {
     // 使用第一層類別查詢
     $queryFirst = sprintf("SELECT * FROM product, product_img,pyclass WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id AND product.classid=pyclass.classid AND pyclass.uplink='%d' ORDER BY product.p_id DESC", $_GET['classid']);
-}elseif (isset($_GET['classid'])){
+} elseif (isset($_GET['classid'])) {
     // 使用產品類別查詢
     $queryFirst = sprintf("SELECT * FROM product, product_img WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id AND product.classid='%d' ORDER BY product.p_id DESC", $_GET['classid']);
-}else{
+} else {
     // 列出產品product資料查詢
     $queryFirst = sprintf("SELECT * FROM product, product_img WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id ORDER BY product.p_id DESC", $maxRows_rs);
 }
@@ -27,7 +27,7 @@ $query = sprintf("%s LIMIT %d,%d", $queryFirst, $starRow_rs, $maxRows_rs);
 $pList01 = $link->query($query);
 $i = 1;
 ?>
-<?php  if($pList01->rowCount() != 0) {?>
+<?php if ($pList01->rowCount() != 0) { ?>
     <?php while ($pList01_Rows = $pList01->fetch()) { ?>
         <?php if ($i % 4 == 1) { ?> <div class="row text-center"> <?php } ?>
             <div class="card col-md-3">
@@ -36,8 +36,10 @@ $i = 1;
                     <h5 class="card-title"><?php echo $pList01_Rows['p_name']; ?></h5>
                     <p class="card-text"><?php echo mb_substr($pList01_Rows['p_intro'], 0, 30, "utf-8"); ?></p>
                     <p class="card-text">NT <?php echo $pList01_Rows['p_price']; ?></p>
-                    <a href="#" class="btn btn-primary">更多資訊</a>
-                    <a href="#" class="btn btn-success">放購物車</a>
+                    <a href="goods.php?p_id=<?php echo $pList01_Rows['p_id']; ?>" class="btn btn-primary">更多資訊</a>
+                    <button name="button01[]" id="button01[]" type="button" class="btn btn-success" onclick="addcart(<?php echo $pList01_Rows['p_id']; ?>)">
+                        加入購物車
+                    </button>
                 </div>
             </div>
             <?php if ($i % 4 == 0 || $i == $pList01->rowCount()) { ?>
@@ -48,9 +50,9 @@ $i = 1;
     <!-- 建立分頁php程式 -->
     <div class="row mt-2">
         <?php // 取得目前頁數
-        if(isset($_GET['totalRows_rs'])){
+        if (isset($_GET['totalRows_rs'])) {
             $totalRows_rs = $_GET['totalRows_rs'];
-        }else{
+        } else {
             $all_rs = $link->query($queryFirst);
             $totalRows_rs = $all_rs->rowCount();
         }
@@ -69,9 +71,9 @@ $i = 1;
             </ul>
         </nav>
     </div>
-    
-<?php } else {?>
+
+<?php } else { ?>
     <div class="alert alert-danger" role="alert">
-    抱歉，沒有相關產品。
+        抱歉，沒有相關產品。
     </div>
 <?php } ?>

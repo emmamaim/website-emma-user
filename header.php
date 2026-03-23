@@ -9,6 +9,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <?php
+        // 讀取後臺購物車内產品數量
+        $SQLstring = "SELECT * FROM cart WHERE orderid is NULL AND ip='" . $_SERVER['REMOTE_ADDR'] . "'";
+        $cart_rs = $link->query($SQLstring);
+        ?>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" href="#">最新消息</a></li>
@@ -17,20 +23,42 @@
                 <li class="nav-item"><a class="nav-link" href="#">門市查詢</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">合作專區</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">客服</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">個人專區</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">登入 / 註冊</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">會員資料</a></li>
-                        <li><a class="dropdown-item" href="#">我的訂單</a></li>
-                        <li><a class="dropdown-item" href="#">管理地址</a></li>
-                        <li><a class="dropdown-item" href="#">我的收藏</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.php">會員注冊</a>
+                </li>
+                <?php
+                if (isset($_SESSION['login'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="btn_confirmLink('是否確定登出？','logout.php')">會員登出</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">會員登入</a>
+                    </li>
+                <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        購物車
+                        <span class="badge text-bg-info">
+                            <?php echo ($cart_rs) ? $cart_rs->rowCount() : ''; ?>
+                        </span>
+                    </a>
                 </li>
             </ul>
+            <?php if (isset($_SESSION['login'])) { ?>
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/<?php echo ($_SESSION['imgname'] != '') ? $_SESSION['imgname'] : 'avatar.svg'; ?>" width="40" height="40" class="rounded-circle">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-dark">
+                            <a class="dropdown-item" href="orderlist.php">Order List</a>
+                            <a class="dropdown-item" href="profile.php">Edit Profile</a>
+                            <a class="dropdown-item" href="#" onclick="btn_confirmLink('請確定是否要登出', 'logout.php');">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            <?php } ?>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-warning" type="submit">Search</button>
@@ -60,7 +88,7 @@ function multiList01()
                     // 用來判斷是否有子分類
                     $first = $pyclass02->fetch(PDO::FETCH_ASSOC);
                     ?>
-                    <?php if($first) { ?>
+                    <?php if ($first) { ?>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item">
@@ -70,10 +98,10 @@ function multiList01()
                             </li>
                             <?php while ($pyclass02_Rows = $pyclass02->fetch()) { ?>
                                 <li>
-                                    <a href="store.php?classid=<?php echo $pyclass02_Rows['classid']; ?>" class="dropdown-item">
+                                    <a href="#" class="dropdown-item">
                                         <em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-fw"></em>
                                         <?php echo $pyclass02_Rows['cname'] ?>
-                                    </a>~
+                                    </a>
                                 </li>
                             <?php } ?>
                         </ul>
